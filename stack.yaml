@@ -1,0 +1,10 @@
+version: 1.0
+provider:
+  name: openfaas
+  gateway: http://localhost:8080
+functions:
+  image-process:
+    lang: python3-http
+    handler: ./image-process
+    image: og4real/image-process:v1
+
