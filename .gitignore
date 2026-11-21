@@ -1,3 +1,7 @@
 template
 build
 .secrets
+.DS_Store
+.venv/
+__pycache__/
+*.pyc
