@@ -1,0 +1,105 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>PixelFaaS - Convert Format</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <h1>PixelFaaS</h1>
+        <p>Serverless Image Processing with OpenFaaS</p>
+    </header>
+
+    <main class="container">
+        <section class="card">
+            <h2>Upload Image</h2>
+
+            <div id="upload-area">
+                <p>Drag and drop your image here</p>
+
+                <input
+                    type="file"
+                    id="image-input"
+                    accept="image/jpeg,image/png,image/webp"
+                >
+
+                <p>Supported formats: JPG, JPEG, PNG</p>
+            </div>
+        </section>
+
+
+        <!-- Convert Image Format -->
+        <section class="card">
+            <h2>Convert Image Format</h2>
+
+            <div class="settings">
+
+                <!-- Output Format -->
+                <div class="input-group">
+                    <label for="output-format">
+                        Output Format
+                    </label>
+
+                    <select id="output-format">
+                        <option value="png" selected>
+                            PNG
+                        </option>
+
+                        <option value="jpeg">
+                            JPEG / JPG
+                        </option>
+
+                        <option value="webp">
+                            WebP
+                        </option>
+                    </select>
+                </div>
+
+                <p class="hint">
+                    Select the format you want to
+                    convert your image to.
+                </p>
+
+            </div>
+
+
+            <!-- Convert Button -->
+            <button id="process-btn" disabled>
+                Convert Image
+            </button>
+
+            <!-- Processing Status -->
+            <p id="status" role="status"></p>
+
+
+            <!-- Conversion Result -->
+            <div id="conversion-result" hidden>
+
+                <p>
+                    Conversion completed successfully!
+                </p>
+
+                <p id="converted-file-info"></p>
+
+                <button id="download-btn" disabled>
+                    Download Converted Image
+                </button>
+            </div>
+        </section>
+
+        <nav class="page-nav">
+            <a href="index.html" class="back-link">
+                ← Back to Home
+            </a>
+        </nav>
+
+    </main>
+    <script src="api.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

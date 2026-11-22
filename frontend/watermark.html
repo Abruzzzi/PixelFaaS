@@ -1,0 +1,99 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>PixelFaaS - Watermark</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <h1>PixelFaaS</h1>
+        <p>Serverless Image Processing with OpenFaaS</p>
+    </header>
+
+    <main class="container">
+        <section class="card">
+            <h2>Upload Image</h2>
+
+            <div id="upload-area">
+                <p>Drag and drop your image here</p>
+
+                <input
+                    type="file"
+                    id="image-input"
+                    accept="image/jpeg,image/png,image/webp"
+                >
+
+                <p>Supported formats: JPG, JPEG, PNG</p>
+            </div>
+        </section>
+        
+        <!-- Automatic Watermark -->
+        <section class="card">
+            <h2>Automatic Watermark</h2>
+            <p>
+                Automatically add a PixelFaaS watermark to your uploaded image.
+            </p>
+            
+            <button id="process-btn" disabled>
+                Add Watermark
+            </button>
+
+            <p id="status" role="status"></p>
+        </section>
+
+        <section class="card">
+            <h2>Image Comparison</h2>
+
+            <div class="comparison">
+
+                <div class="image-panel">
+                    <h3>Original Image</h3>
+
+                    <img
+                        id="original-image"
+                        alt="Original image"
+                        hidden
+                    >
+
+                    <p id="original-info">
+                        No image uploaded
+                    </p>
+                </div>
+
+                <div class="image-panel">
+                    <h3>Processed Image</h3>
+
+                    <img
+                        id="processed-image"
+                        alt="Processed image"
+                        hidden
+                    >
+
+                    <p id="processed-info">
+                        No processed image yet
+                    </p>
+                </div>
+
+            </div>
+
+            <button id="download-btn" disabled>
+                Download Processed Image
+            </button>
+        </section>
+
+            <nav class="page-nav">
+                <a href="index.html" class="back-link">
+                    ← Back to Home
+                </a>
+            </nav>
+    </main>
+    <script src="api.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

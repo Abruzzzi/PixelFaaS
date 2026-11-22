@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PixelFaaS - Image Processing</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <h1>PixelFaaS</h1>
+        <p>Serverless Image Processing with OpenFaaS</p>
+    </header>
+
+    <main class="container">
+        <section class="card">
+            <h2>Upload Image</h2>
+
+            <div id="upload-area">
+                <p>Drag and drop your image here</p>
+
+                <input
+                    type="file"
+                    id="image-input"
+                    accept="image/jpeg,image/png,image/webp"
+                >
+
+                <p>Supported formats: JPG, JPEG, PNG</p>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2>Resize Image</h2>
+            <div class="settings">
+                <p>Resize method</p>
+                <div class="resize-method">
+                    <label>
+                        <input
+                            type="radio"
+                            name="resize-method"
+                            id="percentage-method"
+                            value="percentage"
+                            checked
+                        >
+                        Scale by percentage
+                    </label>
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="resize-method"
+                            id="custom-method"
+                            value="custom"
+                        >
+                        Custom width and height
+                    </label>
+                </div>
+
+                <div id="percentage-settings">
+                    <div class="scale-header">
+                        <label for="scale">Scale</label>
+                        <span id="scale-value">50%</span>
+                    </div>
+                    <input
+                        type="range"
+                        id="scale"
+                        min="10"
+                        max="200"
+                        value="50"
+                    >
+
+                    <div class="scale-labels">
+                        <span>10%</span>
+                        <span>100% (Original)</span>
+                        <span>200%</span>
+                    </div>
+                </div>
+
+
+                <div id="custom-settings" hidden>
+
+                    <div class="dimension-inputs">
+
+                        <div class="input-group">
+                            <label for="width">Width (px)</label>
+                            <input
+                                type="number"
+                                id="width"
+                                value="800"
+                                min="1"
+                            >
+                        </div>
+
+                        <div class="input-group">
+                            <label for="height">Height (px)</label>
+                            <input
+                                type="number"
+                                id="height"
+                                value="600"
+                                min="1"
+                            >
+                        </div>
+
+                    </div>
+
+                    <p class="hint">
+                        Custom dimensions may stretch the image
+                        if the aspect ratio changes.
+                    </p>
+
+                </div>
+
+                <div class="dimension-preview">
+
+                    <p>Image dimensions</p>
+
+                    <div class="dimension-comparison">
+
+                        <div>
+                            <p>Original</p>
+                            <strong id="original-dimensions">
+                                No image uploaded
+                            </strong>
+                        </div>
+
+                        <span class="arrow">→</span>
+
+                        <div>
+                            <p>Resized</p>
+                            <strong id="resized-dimensions">
+                                —
+                            </strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <button id="process-btn" disabled>
+                Process Image
+            </button>
+
+            <p id="status" role="status"></p>
+
+        </section>
+
+        <section class="card">
+            <h2>Image Comparison</h2>
+
+            <div class="comparison">
+
+                <!-- Original Image -->
+                <div class="image-panel">
+                    <h3>Original Image</h3>
+
+                    <img
+                        id="original-image"
+                        alt="Original image"
+                        hidden
+                    >
+
+                    <p id="original-info">
+                        No image uploaded
+                    </p>
+                </div>
+
+                <div class="image-panel">
+                    <h3>Processed Image</h3>
+
+                    <img
+                        id="processed-image"
+                        alt="Processed image"
+                        hidden
+                    >
+
+                    <p id="processed-info">
+                        No processed image yet
+                    </p>
+                </div>
+
+            </div>
+
+            <button id="download-btn" disabled>
+                Download Processed Image
+            </button>
+        </section>
+
+         <nav class="page-nav">
+                <a href="index.html" class="back-link">
+                    ← Back to Home
+                </a>
+        </nav>
+
+    </main>
+    <script src="api.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
